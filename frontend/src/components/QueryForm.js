@@ -8,10 +8,11 @@ const QueryForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/query', { question });
+            const res = await axios.post('http://localhost:5000/chat', { question });
             setResponse(res.data.answer);
         } catch (error) {
-            setResponse('Error connecting to the backend.');
+            console.error("Error connecting to the backend:", error);
+            setResponse("There was an error processing your question.");
         }
     };
 
